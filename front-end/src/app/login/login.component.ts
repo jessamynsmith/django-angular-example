@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import {ApiService} from "../api.service";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
   }
@@ -20,8 +22,9 @@ export class LoginComponent implements OnInit {
   submitted = false;
 
   onSubmit() {
-    // submit to backend here
-    console.log('model', this.model);
+    this.apiService.login(this.model).subscribe((response) => {
+      console.log(response);
+    });
     this.submitted = true;
   }
 

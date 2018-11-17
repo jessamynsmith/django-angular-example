@@ -15,12 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.contrib.staticfiles.views import serve
-from django.urls import path, re_path
+from django.urls import include, path, re_path
 from django.views.generic import RedirectView
+
+from rest_framework_jwt.views import obtain_jwt_token
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),
+    path('rest-auth/', include('rest_auth.urls')),
+    path('api-token-auth/', obtain_jwt_token),
+
+    # Angular URLs
     re_path(r'^$', serve, kwargs={'path': 'index.html'}),
     re_path(r'^(?!/?static/)(?!/?media/)(?P<path>.*\..*)$',
             RedirectView.as_view(url='/static/%(path)s', permanent=False))
