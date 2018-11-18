@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 import { EqiComponent } from "./eqi/eqi.component";
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'eqi', component: EqiComponent }
+  { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] },
+  { path: 'eqi', component: EqiComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

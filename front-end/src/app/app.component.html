@@ -5,6 +5,7 @@
   </h1>
 </div>
 
-<a routerLink="/login">Login</a>
+<a *ngIf="!isLoggedIn" routerLink="/login">Login</a>
+<a *ngIf="isLoggedIn" routerLink="/logout">Logout</a>
 
 <router-outlet></router-outlet>

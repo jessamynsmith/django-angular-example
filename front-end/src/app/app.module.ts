@@ -8,16 +8,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { EqiComponent } from './eqi/eqi.component';
+import { AuthService } from "./services/auth.service";
+import { LogoutComponent } from './logout/logout.component';
 
 export function tokenGetter() {
-  return localStorage.getItem('access_token');
+  return AuthService.getToken();
 }
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    EqiComponent
+    EqiComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

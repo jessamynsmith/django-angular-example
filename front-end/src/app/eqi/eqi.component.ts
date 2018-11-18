@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from "../api.service";
+import { ApiService } from "../services/api.service";
 import {County} from "../models/county"
 
 @Component({
@@ -7,7 +7,6 @@ import {County} from "../models/county"
   templateUrl: './eqi.component.html',
   styleUrls: ['./eqi.component.sass']
 })
-// TODO this view should only be accessible if logged in
 export class EqiComponent implements OnInit {
   counties: County[];
   error: any;
