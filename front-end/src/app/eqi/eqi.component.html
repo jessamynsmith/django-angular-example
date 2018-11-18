@@ -1,0 +1,10 @@
+<div>
+
+  <button (click)="getCounties()">Get Counties</button>
+
+  <h3 *ngIf="counties">Counties</h3>
+  <ul>
+    <li *ngFor="let county of counties">{{ county.name }}</li>
+  </ul>
+
+</div>

@@ -20,12 +20,16 @@ from django.views.generic import RedirectView
 
 from rest_framework_jwt.views import obtain_jwt_token
 
+from eqi import urls as eqi_urls
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('rest-auth/', include('rest_auth.urls')),
     path('api-token-auth/', obtain_jwt_token),
+
+    path('', include(eqi_urls)),
 
     # Angular URLs
     re_path(r'^$', serve, kwargs={'path': 'index.html'}),

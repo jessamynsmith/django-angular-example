@@ -9,6 +9,7 @@ djangorestframework = "*"
 django-rest-auth = "*"
 djangorestframework-jwt = "*"
 django-cors-headers = "*"
+django-localflavor = "*"
 
 [dev-packages]
 

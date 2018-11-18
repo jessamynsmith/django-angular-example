@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router"
 
 import {ApiService} from "../api.service";
 
@@ -9,7 +10,7 @@ import {ApiService} from "../api.service";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.apiService.login(this.model).subscribe((response) => {
-      console.log(response);
+      localStorage.setItem('access_token', response['token']);
+      this.router.navigate(['/eqi'])
     });
     this.submitted = true;
   }
