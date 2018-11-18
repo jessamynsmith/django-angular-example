@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.apiService.login(this.model).subscribe((response) => {
-      this.authService.setToken(response['token']);
+      this.authService.setAuthenticated(response);
       this.router.navigate(['/eqi']);
     });
     this.submitted = true;
