@@ -2,9 +2,10 @@
 
   <button (click)="getCounties()">Get Counties</button>
 
-  <h3 *ngIf="counties">Counties</h3>
+  <h3>Counties</h3>
   <ul>
     <li *ngFor="let county of counties">{{ county.name }}</li>
   </ul>
+  <p *ngIf="error">Unable to retrieve counties</p>
 
 </div>

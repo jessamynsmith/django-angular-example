@@ -145,6 +145,9 @@ REST_FRAMEWORK = {
     ),
 }
 
+
+# TODO consider using Auth0 to handle authentication
+# TODO add social auth
 REST_USE_JWT = True
 
 JWT_AUTH = {

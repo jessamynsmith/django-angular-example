@@ -7,8 +7,10 @@ import {County} from "../models/county"
   templateUrl: './eqi.component.html',
   styleUrls: ['./eqi.component.sass']
 })
+// TODO this view should only be accessible if logged in
 export class EqiComponent implements OnInit {
   counties: County[];
+  error: any;
 
   constructor(private apiService: ApiService) { }
 
@@ -18,6 +20,9 @@ export class EqiComponent implements OnInit {
   getCounties() {
     this.apiService.counties().subscribe((counties) => {
       this.counties = counties;
+    }, (error) => {
+      this.error = error;
+      console.log('Error retrieving counties:', error);
     });
   }
 
