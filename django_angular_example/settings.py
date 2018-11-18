@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_auth',
+    'users',
     'eqi',
 ]
 
@@ -153,4 +154,5 @@ REST_USE_JWT = True
 JWT_AUTH = {
     'JWT_AUTH_HEADER_PREFIX': 'bearer',
     'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=600),
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'users.utils.jwt.jwt_response_payload_handler'
 }
