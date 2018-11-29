@@ -20,11 +20,12 @@ ANGULAR_APP_DIR = os.path.join(BASE_DIR, 'front-end', 'dist', 'front-end')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'np49ewqrh4+vj=@5n&yubb_f5pl+*+o#%kn3(9g_^0&=dtll+d'
+# Export a secret value in production; for local development, the default is good enough
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',
+                            'np49ewqrh4+vj=@5n&yubb_f5pl+*+o#%kn3(9g_^0&=dtll+d')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.environ.get('DJANGO_DEBUG', '1')))
 
 ALLOWED_HOSTS = []
 
