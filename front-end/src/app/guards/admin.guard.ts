@@ -1,23 +1,20 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import decode from 'jwt-decode';
 import { AuthService } from "../services/auth.service";
 
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
     constructor(
-        private router: Router
+        private router: Router,
+        private authService: AuthService
     ) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const token = AuthService.getToken();
+        const group = this.authService.getGroup();
 
-        // decode the token to get its payload
-        const tokenPayload = decode(token);
-
-        if (!token) {
-            this.router.navigate(['/login']);
+        if (group !== 'admin') {
+            this.router.navigate(['/eqi']);
             return false;
         }
         return true;

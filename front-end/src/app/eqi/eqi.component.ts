@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from "../services/api.service";
 import {County} from "../models/county"
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-eqi',
@@ -10,10 +11,17 @@ import {County} from "../models/county"
 export class EqiComponent implements OnInit {
   counties: County[];
   error: any;
+  group: string;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private authService: AuthService) {
+    this.group = this.authService.getGroup();
+  }
 
   ngOnInit() {
+  }
+
+  isAdmin() {
+    return this.group == 'admin';
   }
 
   getCounties() {

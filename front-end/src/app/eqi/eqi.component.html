@@ -1,5 +1,7 @@
 <div>
 
+  <p *ngIf="isAdmin()"><a routerLink="/eqi/admin">Counties Admin</a></p>
+
   <button (click)="getCounties()">Get Counties</button>
 
   <h3>Counties</h3>
