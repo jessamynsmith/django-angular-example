@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { EqiComponent } from './eqi/eqi.component';
 import { AuthService } from "./services/auth.service";
 import { LogoutComponent } from './logout/logout.component';
+import { EqiAdminComponent } from './eqi-admin/eqi-admin.component';
 
 export function tokenGetter() {
   return AuthService.getToken();
@@ -20,7 +21,8 @@ export function tokenGetter() {
     AppComponent,
     LoginComponent,
     EqiComponent,
-    LogoutComponent
+    LogoutComponent,
+    EqiAdminComponent
   ],
   imports: [
     BrowserModule,

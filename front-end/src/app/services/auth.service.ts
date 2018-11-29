@@ -18,7 +18,7 @@ export class AuthService {
     });
   }
 
-  // Current used when the service cannot be injected, or when it is more convenient
+  // Currently used when the service cannot be injected, or when it is more convenient
   // not to work with an Observable. There may be a more elegant solution.
   static getToken() {
     return localStorage.getItem('access_token');
