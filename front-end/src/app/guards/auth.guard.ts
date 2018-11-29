@@ -1,6 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import decode from 'jwt-decode';
 import { AuthService } from "../services/auth.service";
 
 
@@ -12,9 +11,6 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const token = AuthService.getToken();
-
-        // decode the token to get its payload
-        const tokenPayload = decode(token);
 
         if (!token) {
             this.router.navigate(['/login']);
